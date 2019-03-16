@@ -1,11 +1,11 @@
-const xlsParser = require('../lambda/xls-parser')
-const fileRaw = require('./fixtures')
+const xlsParser = require("../lambda/xls-parser")
+const fileRaw = require("./fixtures")
 
-describe('parseXls', () => {
-    it('should parse successfully', () => {
-        const file = Buffer.from(fileRaw, 'hex')
+describe("parseXls", () => {
+  it("should parse successfully", () => {
+    const file = Buffer.from(fileRaw, "hex")
 
-        const parsed = xlsParser(file)
-        expect(parsed).toHaveLength(50)
-    });
-});
+    const parsed = xlsParser(file)
+    expect(parsed).toHaveLength(50)
+  })
+})
