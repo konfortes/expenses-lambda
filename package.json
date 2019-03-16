@@ -1,0 +1,27 @@
+{
+  "name": "expenses-lambda",
+  "version": "1.0.0",
+  "description": "## serverless Workflow",
+  "main": "s3.test.js",
+  "scripts": {
+    "deploy": "cd lambda && serverless deploy --region eu-central-1",
+    "logs": "serverless logs -f expensesLambda -t",
+    "test": "jest --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/konfortes/expenses-lambda.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/konfortes/expenses-lambda/issues"
+  },
+  "homepage": "https://github.com/konfortes/expenses-lambda#readme",
+  "devDependencies": {
+    "jest": "^24.5.0"
+  },
+  "dependencies": {
+    "xlsx": "^0.14.1"
+  }
+}

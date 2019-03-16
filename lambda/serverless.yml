@@ -1,0 +1,16 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: expenses
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+
+functions:
+  parse:
+    handler: handler.parse
+events:
+  - s3: expenseskon
