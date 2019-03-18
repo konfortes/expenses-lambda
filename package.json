@@ -4,10 +4,13 @@
   "description": "## serverless Workflow",
   "main": "s3.test.js",
   "scripts": {
-    "deploy": "cd lambda && serverless deploy --region eu-central-1",
+    "start": "TMPDIR=/private$TMPDIR docker-compose up -d",
+    "deploy": "cd lambda && serverless deploy --stage prod --region eu-central-1",
+    "deploy:local": "cd lambda && serverless deploy --stage local",
     "logs": "cd lambda && serverless logs -f parse -t",
-    "invoke": "cd lambda && serverless invoke local --function parse",
-    "test": "jest --watch"
+    "invoke": "cd lambda && serverless invoke local --stage local --function parse --path event.json",
+    "test": "jest --watch",
+    "s3": "aws --endpoint-url=http://localhost:4568 s3"
   },
   "repository": {
     "type": "git",
@@ -20,7 +23,8 @@
   },
   "homepage": "https://github.com/konfortes/expenses-lambda#readme",
   "devDependencies": {
-    "jest": "^24.5.0"
+    "jest": "^24.5.0",
+    "serverless-localstack": "^0.4.7"
   },
   "dependencies": {
     "aws-sdk": "^2.422.0",

@@ -6,6 +6,7 @@ const S3 = new AWS.S3()
 const xlsParser = require("./xls-parser")
 
 module.exports.parse = async (event, context) => {
+  console.log('EVENT: ', event);
   const s3Record = event.Records[0].s3
   const params = {
     Bucket: s3Record.bucket.name,

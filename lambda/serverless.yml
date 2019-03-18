@@ -1,16 +1,32 @@
-# For full config options, check the docs:
-#    docs.serverless.com
-#
-# Happy Coding!
-
 service: expenses
 
+plugins:
+  - serverless-localstack
 provider:
   name: aws
   runtime: nodejs8.10
-
+  stage: ${opt:stage,'local'}
+  environment:
+    PG_URL: ${self:custom.environment.pgUrl}
 functions:
   parse:
     handler: handler.parse
 events:
   - s3: expenseskon
+
+custom:
+  stages:
+    - local
+    - prod
+  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
+
+  localstack:
+    host: http://localhost
+    stages:
+      - local
+    endpoints:
+      S3: http://localhost:4568
+      Lambda: http://localhost:4567
+    lambda:
+      # Enable this flag to improve performance
+      mountCode: True
