@@ -5,7 +5,8 @@
   "main": "s3.test.js",
   "scripts": {
     "deploy": "cd lambda && serverless deploy --region eu-central-1",
-    "logs": "serverless logs -f expensesLambda -t",
+    "logs": "cd lambda && serverless logs -f parse -t",
+    "invoke": "cd lambda && serverless invoke local --function parse",
     "test": "jest --watch"
   },
   "repository": {
@@ -22,6 +23,7 @@
     "jest": "^24.5.0"
   },
   "dependencies": {
+    "aws-sdk": "^2.422.0",
     "xlsx": "^0.14.1"
   }
 }
