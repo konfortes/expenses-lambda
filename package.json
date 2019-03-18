@@ -8,7 +8,7 @@
     "deploy": "cd lambda && serverless deploy --stage prod --region eu-central-1",
     "deploy:local": "cd lambda && serverless deploy --stage local",
     "logs": "cd lambda && serverless logs -f parse -t",
-    "invoke": "cd lambda && serverless invoke local --stage local --function parse --path event.json",
+    "invoke": "cd lambda && serverless invoke local --stage local --function parse --path '../event.json'",
     "test": "jest --watch",
     "s3": "aws --endpoint-url=http://localhost:4568 s3"
   },

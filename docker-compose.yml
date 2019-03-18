@@ -11,7 +11,7 @@ services:
       - DEBUG=true
       - DATA_DIR=/tmp/localstack/data
       - PORT_WEB_UI=8080
-      - LAMBDA_EXECUTOR=docker-reuse
+      - LAMBDA_EXECUTOR=local
       # - KINESIS_ERROR_PROBABILITY=${KINESIS_ERROR_PROBABILITY- }
       - DOCKER_HOST=unix:///var/run/docker.sock
     volumes:

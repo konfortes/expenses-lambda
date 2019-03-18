@@ -5,20 +5,23 @@ plugins:
 provider:
   name: aws
   runtime: nodejs8.10
-  stage: ${opt:stage,'local'}
+  stage: ${opt:stage, 'local'}
   environment:
     PG_URL: ${self:custom.environment.pgUrl}
+    NODE_ENV: ${self:custom.environment.nodeEnv}
+    S3_ENDPOINT: ${self:custom.environment.s3Endpoint}
 functions:
   parse:
     handler: handler.parse
 events:
-  - s3: expenseskon
+  # - s3: expenseskon --> this works but does not create the event
+  - s3:
+    bucket: expensescon
+    event: s3:ObjectCreated:*
 
 custom:
-  stages:
-    - local
-    - prod
-  environment: ${file(env.yml):${self:custom.stage}, file(env.yml):default}
+  stage: ${opt:stage, 'local'}
+  environment: ${file(../env.yml):${self:custom.stage}, file(../env.yml):default}
 
   localstack:
     host: http://localhost
