@@ -2,10 +2,10 @@
     "Records": [{
         "s3": {
             "bucket": {
-                "name": "bucketName"
+                "name": "expenses"
             },
             "object": {
-                "key": "objectKey"
+                "key": "Transactions_14_03_2019.xls"
             }
         }
     }]

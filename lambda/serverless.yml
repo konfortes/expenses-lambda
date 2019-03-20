@@ -7,14 +7,15 @@ provider:
   runtime: nodejs8.10
   stage: ${opt:stage, 'local'}
   environment:
-    PG_URL: ${self:custom.environment.pgUrl}
     NODE_ENV: ${self:custom.environment.nodeEnv}
     S3_ENDPOINT: ${self:custom.environment.s3Endpoint}
+    S3_FORCE_PATH_STYLE: ${self:custom.environment.s3ForcePathStyle}
+    AWS_REGION: ${self:custom.environment.awsRegion}
+    SSL_ENABLED: ${self:custom.environment.sslEnabled}
 functions:
   parse:
     handler: handler.parse
 events:
-  # - s3: expenseskon --> this works but does not create the event
   - s3:
     bucket: expensescon
     event: s3:ObjectCreated:*
@@ -22,8 +23,8 @@ events:
 custom:
   stage: ${opt:stage, 'local'}
   environment: ${file(../env.yml):${self:custom.stage}, file(../env.yml):default}
-
   localstack:
+    debug: true
     host: http://localhost
     stages:
       - local

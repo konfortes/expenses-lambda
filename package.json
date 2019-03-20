@@ -8,7 +8,7 @@
     "deploy": "cd lambda && serverless deploy --stage prod --region eu-central-1",
     "deploy:local": "cd lambda && serverless deploy --stage local",
     "logs": "cd lambda && serverless logs -f parse -t",
-    "invoke": "cd lambda && serverless invoke local --stage local --function parse --path '../event.json'",
+    "invoke": "cd lambda && serverless invoke local --function parse --path '../event.json'",
     "test": "jest --watch",
     "s3": "aws --endpoint-url=http://localhost:4568 s3"
   },
@@ -27,6 +27,7 @@
     "serverless-localstack": "^0.4.7"
   },
   "dependencies": {
+    "@elastic/elasticsearch": "0.1.0-beta.2",
     "aws-sdk": "^2.422.0",
     "xlsx": "^0.14.1"
   }
