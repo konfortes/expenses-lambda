@@ -10,7 +10,7 @@ provider:
     NODE_ENV: ${self:custom.environment.nodeEnv}
     S3_ENDPOINT: ${self:custom.environment.s3Endpoint}
     S3_FORCE_PATH_STYLE: ${self:custom.environment.s3ForcePathStyle}
-    AWS_REGION: ${self:custom.environment.awsRegion}
+    REGION: ${self:custom.environment.region}
     SSL_ENABLED: ${self:custom.environment.sslEnabled}
 functions:
   parse:
